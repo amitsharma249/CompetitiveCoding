@@ -1,0 +1,45 @@
+int Solution::maxSubArray(const vector<int> &A) {
+    
+    int size = A.size();
+    //int matrix[size][size];
+    int maxSum = A[0];
+    int sum = A[0];
+    int i,j;
+    
+    /*int** matrix = new int*[size];
+    for(int i = 0; i < size; ++i)
+        matrix[i] = new int[size];*/
+    
+    
+    for(i=1;i<size;i++)
+    {
+        sum+=A[i];
+        //cout<<"Sum: "<<sum<<endl;
+        if(sum>maxSum){
+            //cout<<"Sum > maxSum "<<sum<<" "<<maxSum<<endl;
+            maxSum=sum;
+        }
+        if(A[i]>maxSum){
+            //cout<<"A[i] > maxSum "<<A[i]<<" "<<sum<<" "<<maxSum<<endl;
+            maxSum=A[i];
+            sum=A[i];
+        }
+        else if(A[i]>sum)
+        {
+            sum=A[i];
+        }
+    }
+    
+    /*matrix[0][0] = A[0];
+    
+    for(i=1;i<size;i++)
+    {
+        for(j=0;j<=i;j++)
+        {
+            matrix[j][i]=matrix[j][i-1]+A[i];
+            if(matrix[j][i]>maxSum)
+                maxSum = matrix[j][i];
+        }
+    }*/
+    return maxSum;
+}
